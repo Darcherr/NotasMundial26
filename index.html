@@ -9,7 +9,6 @@
 </head>
 <body>
     <div class="container">
-        <!-- Header -->
         <header class="header">
             <div class="header-content">
                 <div class="team-badge">
@@ -20,15 +19,14 @@
                     </div>
                 </div>
                 <div class="tournament-info">
-                    <div class="stat-box"><span class="stat-value">4</span><span class="stat-label">Partidos</span></div>
-                    <div class="stat-box"><span class="stat-value">11</span><span class="stat-label">Goles</span></div>
-                    <div class="stat-box"><span class="stat-value">3</span><span class="stat-label">Recibidos</span></div>
+                    <div class="stat-box"><span class="stat-value">5</span><span class="stat-label">Partidos</span></div>
+                    <div class="stat-box"><span class="stat-value">14</span><span class="stat-label">Goles</span></div>
+                    <div class="stat-box"><span class="stat-value">5</span><span class="stat-label">Recibidos</span></div>
                     <div class="stat-box"><span class="stat-value">100%</span><span class="stat-label">Victoria</span></div>
                 </div>
             </div>
         </header>
 
-        <!-- Match Navigation -->
         <nav class="match-nav">
             <button class="match-tab active" data-match="1">
                 <span class="match-date">17 Jun</span>
@@ -41,18 +39,22 @@
                 <span class="match-stage">Grupo J</span>
             </button>
             <button class="match-tab" data-match="3">
+                <span class="match-date">27 Jun</span>
+                <span class="match-teams">ARG 3-1 JOR</span>
+                <span class="match-stage">Grupo J</span>
+            </button>
+            <button class="match-tab" data-match="4">
                 <span class="match-date">3 Jul</span>
                 <span class="match-teams">ARG 3-2 CPV</span>
                 <span class="match-stage">Dieciseisavos</span>
             </button>
-            <button class="match-tab" data-match="4">
+            <button class="match-tab" data-match="5">
                 <span class="match-date">7 Jul</span>
                 <span class="match-teams">ARG 3-2 EGY</span>
                 <span class="match-stage">Octavos</span>
             </button>
         </nav>
 
-        <!-- Match Summary -->
         <div class="match-summary" id="matchSummary">
             <div class="summary-content">
                 <div class="score-display">
@@ -63,77 +65,74 @@
                     <span class="score-team">ALG</span>
                 </div>
                 <div class="match-details">
-                    <p><strong>Estadio:</strong> Arrowhead Stadium, Kansas City</p>
-                    <p><strong>Fecha:</strong> 17 de Junio, 2026</p>
+                    <p><strong>Arrowhead Stadium, Kansas City</strong></p>
+                    <p>17 Jun · Grupo J · 4-4-2</p>
                     <p><strong>Goles:</strong> Messi 17', 60', 76'</p>
                 </div>
             </div>
+            <div class="sources-legend">
+                <span class="source-legend-item"><span class="source-dot" style="background: #e74c3c;"></span> Goal.com</span>
+            </div>
         </div>
 
-        <!-- Filters -->
         <div class="filters">
             <button class="filter-btn active" data-filter="all">Todos</button>
             <button class="filter-btn" data-filter="titular">Titulares</button>
             <button class="filter-btn" data-filter="suplente">Suplentes</button>
         </div>
 
-        <!-- Pitch and Substitutes -->
         <div class="pitch-layout">
-            <!-- Football Pitch -->
             <div class="pitch-wrapper">
                 <div class="pitch" id="pitch">
-                    <!-- Pitch markings -->
-                    <div class="pitch-lines">
-                        <div class="center-circle"></div>
-                        <div class="center-spot"></div>
-                        <div class="center-line"></div>
-                        <div class="penalty-area-top"></div>
-                        <div class="penalty-area-bottom"></div>
-                        <div class="goal-area-top"></div>
-                        <div class="goal-area-bottom"></div>
-                        <div class="penalty-spot-top"></div>
-                        <div class="penalty-spot-bottom"></div>
-                        <div class="goal-top"></div>
-                        <div class="goal-bottom"></div>
-                    </div>
-                    <!-- Players will be placed here by JS -->
+                    <!-- FIFA Pitch Markings -->
+                    <div class="pitch-outline"></div>
+                    <div class="halfway-line"></div>
+                    <div class="centre-circle"></div>
+                    <div class="centre-spot"></div>
+                    <div class="penalty-area-top"></div>
+                    <div class="penalty-area-bottom"></div>
+                    <div class="goal-area-top"></div>
+                    <div class="goal-area-bottom"></div>
+                    <div class="penalty-spot-top"></div>
+                    <div class="penalty-spot-bottom"></div>
+                    <div class="penalty-arc-top"></div>
+                    <div class="penalty-arc-bottom"></div>
+                    <div class="goal-top"></div>
+                    <div class="goal-bottom"></div>
+                    <div class="corner-tl"></div>
+                    <div class="corner-tr"></div>
+                    <div class="corner-bl"></div>
+                    <div class="corner-br"></div>
+                    <!-- Players -->
                     <div class="players-on-pitch" id="playersOnPitch"></div>
                 </div>
             </div>
-
-            <!-- Substitutes Bench -->
             <div class="bench-section">
-                <h3 class="bench-title">SUPLENTES</h3>
+                <h3 class="bench-title">Suplentes</h3>
                 <div class="bench-players" id="benchPlayers"></div>
             </div>
         </div>
 
-        <!-- Selected Player Detail -->
         <div class="player-detail-panel" id="playerDetail" style="display:none;">
             <button class="close-detail" id="closeDetail">&times;</button>
             <div class="detail-content" id="detailContent"></div>
         </div>
 
-        <!-- Average Ratings -->
         <section class="averages-section">
             <h2 class="section-title">Promedio Calificaciones Titulares</h2>
-            <div class="chart-container">
-                <canvas id="averagesChart"></canvas>
-            </div>
+            <div class="chart-container"><canvas id="averagesChart"></canvas></div>
         </section>
 
-        <!-- Top Players -->
         <section class="top-players-section">
             <h2 class="section-title">Mejores Calificaciones del Torneo</h2>
             <div class="top-players-grid" id="topPlayers"></div>
         </section>
 
         <footer class="footer">
-            <p>Fuente: Sofascore, Squawka, Goal.com, Sports Mole</p>
-            <p>Datos al 7 de Julio, 2026</p>
+            <p>Fuente: Goal.com</p>
+            <p>Datos al 8 de Julio, 2026</p>
         </footer>
     </div>
-
     <script src="app.js"></script>
 </body>
 </html>
